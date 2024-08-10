@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee49b902-463b-481d-b7ab-02de4c1fc9ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manga-rosa/manga-rosa.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manga-rosa/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manga-rosa/src/br/com/mangarosa/interfaces/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-rosa/src/br/com/mangarosa/interfaces/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-rosa/src/br/com/mangarosa/interfaces/Sort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
