@@ -8,7 +8,7 @@ import br.com.mangarosa.model.Pedido;
 
 public class RadixSortTest {
 
-    // Gerar uma lista de Pedidos com IDs aleatórios
+    // Gerar lista de Pedidos
     public static List<Pedido> generatePedidos(int numPedidos) {
         List<Pedido> pedidos = new ArrayList<>();
         Random random = new Random();
@@ -30,7 +30,6 @@ public class RadixSortTest {
         // Gerar uma lista de pedidos
         List<Pedido> pedidos = generatePedidos(numPedidos);
 
-        // Instanciar o algoritmo Radix Sort
         Radix radixSort = new Radix();
 
         // Medir o tempo de execução do algoritmo
@@ -38,11 +37,9 @@ public class RadixSortTest {
         List<Pedido> sortedPedidos = radixSort.sort(pedidos);
         long endTime = System.currentTimeMillis();
 
-        // Imprimir os resultados
         System.out.println("Número de pedidos: " + numPedidos);
         System.out.println("Tempo de execução: " + (endTime - startTime) + " ms");
         System.out.println("Número de comparações: " + radixSort.numberComparisons());
         System.out.println("Pedidos ordenados: " + sortedPedidos.size());
-        System.out.println("----");
     }
 }

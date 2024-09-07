@@ -27,7 +27,7 @@ public class Radix implements Sort<Pedido> {
     }
 
     private void countingSortByCharacterPosition(List<Pedido> list, int position) {
-        // Contagem de caracteres (base 62: 0-9, A-Z, a-z)
+        // (0-9, A-Z, a-z)
         int[] count = new int[62];
         List<Pedido> output = new ArrayList<>(list.size());
     
@@ -39,7 +39,7 @@ public class Radix implements Sort<Pedido> {
             char c = pedido.getId()[position];
             int index = getIndex(c);
             count[index]++;
-            numberOfComparisons++; // Contador de operações de contagem
+            numberOfComparisons++; 
         }
     
         // Alterar o array de contagem para que cada elemento seja a posição final do caractere
@@ -48,9 +48,9 @@ public class Radix implements Sort<Pedido> {
             numberOfComparisons++; // Contador de operações de atualização
         }
     
-        // Inicializar a lista de saída com a mesma capacidade da lista de entrada
+        // lista de saída com a mesma capacidade da lista de entrada
         for (int i = 0; i < list.size(); i++) {
-            output.add(null); // Preenche com nulos inicialmente
+            output.add(null); 
         }
     
         // Construa o array de saída
@@ -61,10 +61,9 @@ public class Radix implements Sort<Pedido> {
             int pos = count[index] - 1;
             output.set(pos, pedido);
             count[index]--;
-            numberOfComparisons++; // Contador de operações de adição na lista de saída
+            numberOfComparisons++; 
         }
     
-        // Copia a lista de saída para a lista original
         for (int i = 0; i < list.size(); i++) {
             list.set(i, output.get(i));
         }
