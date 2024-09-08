@@ -5,10 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 // Classe RadixSort que implementa o algoritmo Radix Sort para o tipo Pedido.
-// Implementa a interface Sort<Pedido>, que define a necessidade de implementar o método de ordenação e a contagem de comparações.
 public class RadixSort implements Sort<Pedido> {
 
-    // Atributo para armazenar o número de comparações feitas durante a ordenação.
     private int comparisons;
 
     // Método que realiza a ordenação da lista de pedidos usando radix sort.
@@ -18,8 +16,8 @@ public class RadixSort implements Sort<Pedido> {
     public List<Pedido> sort(List<Pedido> dataset) {
         comparisons = 0; // Reseta o número de comparações
         Pedido[] pedidosArray = dataset.toArray(new Pedido[0]); // Converte a lista para array
-        radixSort(pedidosArray); // Chama o método radixSort para ordenar o array
-        return Arrays.asList(pedidosArray); // Retorna a lista ordenada
+        radixSort(pedidosArray); 
+        return Arrays.asList(pedidosArray); 
     }
 
     // Itera sobre cada posição do identificador (id) dos pedidos, da última para a primeira posição,
@@ -30,7 +28,7 @@ public class RadixSort implements Sort<Pedido> {
         }
     }
 
-    // Método privado que implementa o Counting Sort para uma determinada posição do id dos pedidos.
+    // Método que implementa o Counting Sort para uma determinada posição do id dos pedidos.
     // Ordena os pedidos com base no caractere em uma posição específica do id, usando um array de contagem.
     private void countingSort(Pedido[] pedidos, int pos) {
         int n = pedidos.length; // Número de pedidos
@@ -42,9 +40,9 @@ public class RadixSort implements Sort<Pedido> {
 
         // Conta a ocorrência de cada caractere na posição 'pos' do id dos pedidos
         for (Pedido pedido : pedidos) {
-            comparisons++; // Incrementa o número de comparações
+            comparisons++;
             char key = pedido.getId()[pos]; // Obtém o caractere na posição 'pos'
-            count[key]++; // Incrementa a contagem para o caractere 'key'
+            count[key]++;
         }
 
         // Atualiza o array de contagem para que cada posição contenha o índice final de cada caractere
@@ -56,7 +54,7 @@ public class RadixSort implements Sort<Pedido> {
         for (int i = n - 1; i >= 0; i--) {
             char key = pedidos[i].getId()[pos]; // Obtém o caractere na posição 'pos'
             output[count[key] - 1] = pedidos[i]; // Coloca o pedido na posição correta do array de saída
-            count[key]--; // Decrementa a contagem para o caractere 'key'
+            count[key]--;
         }
 
         // Copia o array de saída de volta para o array original de pedidos
