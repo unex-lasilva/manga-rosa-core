@@ -11,21 +11,22 @@ public class RadixSort implements Sort<Pedido> {
     @Override
     public List<Pedido> sort(List<Pedido> dataset) {
         countComparacoes = 0;
-
+        //cria um array de pedidos
         Pedido[] arr = dataset.toArray(new Pedido[0]); 
-
+        //aplica o radix em nosso array
         radix_sort(arr); 
-
+        // Copia cada pedido do array 'arr' para a lista 'listaOrdenada'
         List<Pedido> listaOrdenada = new ArrayList<>();
         for (Pedido p : arr) { 
             listaOrdenada.add(p); 
         }
-
+        //retorna a lista
         return listaOrdenada; 
     }
     //Metodo para executar o radix sort chamando o metodo counting sort
     private void radix_sort(Pedido[] arr) { 
         for (int i = 12; i >= 0; i--) {
+        //chama o metodo couting passando o array e o incremento
             countingSort(arr, i); 
     }
     }
@@ -35,16 +36,16 @@ public class RadixSort implements Sort<Pedido> {
         int[] contador = new int[range]; // Inicializa o array contator com tamanho fixo. 1 operação
         Pedido[] saida = new Pedido[arr.length]; // Inicializa um array de saida de pedidos n vezes
 
-        //Preenchimento do array contador e incremento no numero de contagens de comparações: 3n operações
-        for (Pedido pedido : arr) { // n 
+        // Itera sobre o array 'arr', incrementa o valor correspondente no array 'contador' e atualiza a contagem de comparações: 3n operações
+        for (Pedido pedido : arr) { 
             char c = pedido.getId()[pos];
             contador[c]++; 
             countComparacoes++; 
         }
 
-        //Acumulo do array contador: 3n operações + 256 sendo nosso range de operações fixo
-        for (int i = 1; i < contador.length; i++) { // 256
-            contador[i] += contador[i - 1]; // 3n
+        // Itera sobre o array 'contador' acumulando os valores de cada posição com o valor da posição anterior (total de 256 iterações)
+        for (int i = 1; i < contador.length; i++) { // 256 operações
+            contador[i] += contador[i - 1]; // Soma acumulada
         }
 
         //Reorganização dos elementos no array de saida: 4n operações
