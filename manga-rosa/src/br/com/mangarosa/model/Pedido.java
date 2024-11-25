@@ -3,7 +3,7 @@ package br.com.mangarosa.model;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Pedido {
+public class Pedido implements Comparable<Pedido> {
 
     private char[] id;
 
@@ -18,7 +18,9 @@ public class Pedido {
     public void setId(char[] id) {
         if(id.length == 13)
             this.id = id;
-        throw new RuntimeException("The id field must have exactly 13 digits.");
+        else {
+            throw new RuntimeException("The id field must have exactly 13 digits.");
+        }
     }
 
     @Override
@@ -38,5 +40,10 @@ public class Pedido {
     @Override
     public int hashCode() {
         return Arrays.hashCode(id);
+    }
+
+    @Override
+    public int compareTo(Pedido o) {
+        return 0;
     }
 }
