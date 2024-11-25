@@ -3,7 +3,7 @@ package br.com.mangarosa.model;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Pedido {
+public class Pedido implements Comparable<Pedido> {
 
     private char[] id;
 
@@ -16,16 +16,17 @@ public class Pedido {
     }
 
     public void setId(char[] id) {
-        if(id.length == 13)
+        if (id.length == 13) {
             this.id = id;
-        throw new RuntimeException("The id field must have exactly 13 digits.");
+        } else {
+            throw new RuntimeException("O campo id deve ter exatos 13 caracteres.");
+        }
     }
+    
 
     @Override
     public String toString() {
-        return "Pedido{" +
-                "id=" + Arrays.toString(id) +
-                '}';
+        return "Pedido{" + "id=" + Arrays.toString(id) + '}';
     }
 
     @Override
@@ -38,5 +39,15 @@ public class Pedido {
     @Override
     public int hashCode() {
         return Arrays.hashCode(id);
+    }
+
+    @Override
+    public int compareTo(Pedido o) {
+        for (int i = 0; i < this.id.length; i++) {
+            if (this.id[i] != o.id[i]) {
+                return Character.compare(this.id[i], o.id[i]);
+            }
+        }
+        return 0; 
     }
 }
